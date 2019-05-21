@@ -1,0 +1,122 @@
+﻿@model VWEB.Models.Responsavel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Responsavel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Sobrenome)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Sobrenome)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Endereco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Endereco)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndNumero)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndNumero)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EndComplemento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EndComplemento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefone2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefone2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UltimoAcesso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UltimoAcesso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PrimeiroAcesso)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PrimeiroAcesso)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoResponsavel)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoResponsavel)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
