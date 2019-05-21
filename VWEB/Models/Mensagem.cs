@@ -12,8 +12,9 @@ namespace VWEB.Models
       public string Titulo { get; set; }
       public string Texto { get; set; }
       public DateTime Data { get; set; }
-      public bool ComImagem { get; set; }
-      public string Imagem { get; set; }
       public TipoMensagem TipoMensagem { get; set; }
+
+      public int? ResponsavelId { get; set;}
+      public virtual Responsavel Responsavel { get; set; }
    }
 }

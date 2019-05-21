@@ -23,5 +23,8 @@ namespace VWEB.Models
       public bool PrimeiroAcesso { get; set; }
       public TipoResponsavel TipoResponsavel { get; set; }
       public ICollection<Aluno> Alunos { get; set; }
+
+       
+    public virtual ICollection<Mensagem> Mensagems { get; set; }
    }
 }
