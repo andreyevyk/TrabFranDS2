@@ -23,6 +23,7 @@ namespace VWEB.Migrations
         
         string IMigrationMetadata.Target
         {
+            
             get { return Resources.GetString("Target"); }
         }
     }

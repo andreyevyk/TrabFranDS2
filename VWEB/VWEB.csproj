@@ -153,6 +153,7 @@
     <Compile Include="Controllers\AlunosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MensagensController.cs" />
+    <Compile Include="Controllers\PostagensController.cs" />
     <Compile Include="Controllers\ResponsaveisController.cs" />
     <Compile Include="Controllers\TurmasController.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
@@ -167,6 +168,10 @@
     <Compile Include="Migrations\201905200023109_InserindoTabelaAlunos.Designer.cs">
       <DependentUpon>201905200023109_InserindoTabelaAlunos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905200116440_AdicionandoControllerDePostagem.cs" />
+    <Compile Include="Migrations\201905200116440_AdicionandoControllerDePostagem.Designer.cs">
+      <DependentUpon>201905200116440_AdicionandoControllerDePostagem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201905210311462_001024052019.cs" />
     <Compile Include="Migrations\201905210311462_001024052019.Designer.cs">
       <DependentUpon>201905210311462_001024052019.cs</DependentUpon>
@@ -174,6 +179,10 @@
     <Compile Include="Migrations\201905210339473_003821052019.cs" />
     <Compile Include="Migrations\201905210339473_003821052019.Designer.cs">
       <DependentUpon>201905210339473_003821052019.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905231810274_230520191509.cs" />
+    <Compile Include="Migrations\201905231810274_230520191509.Designer.cs">
+      <DependentUpon>201905231810274_230520191509.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aluno.cs" />
@@ -304,6 +313,11 @@
     <Content Include="Views\Mensagens\Edit.cshtml" />
     <Content Include="Views\Mensagens\Index.cshtml" />
     <Content Include="Views\Mensagens\View.cshtml" />
+    <Content Include="Views\Postagens\Create.cshtml" />
+    <Content Include="Views\Postagens\Delete.cshtml" />
+    <Content Include="Views\Postagens\Details.cshtml" />
+    <Content Include="Views\Postagens\Edit.cshtml" />
+    <Content Include="Views\Postagens\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -318,11 +332,17 @@
     <EmbeddedResource Include="Migrations\201905200023109_InserindoTabelaAlunos.resx">
       <DependentUpon>201905200023109_InserindoTabelaAlunos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905200116440_AdicionandoControllerDePostagem.resx">
+      <DependentUpon>201905200116440_AdicionandoControllerDePostagem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905210311462_001024052019.resx">
       <DependentUpon>201905210311462_001024052019.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905210339473_003821052019.resx">
       <DependentUpon>201905210339473_003821052019.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905231810274_230520191509.resx">
+      <DependentUpon>201905231810274_230520191509.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

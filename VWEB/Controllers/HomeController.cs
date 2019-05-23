@@ -21,26 +21,12 @@ namespace VWEB.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool toGo = false;
                 foreach (var item in db.Usuarios.ToList())
                 {
-                    if (usuario.Email == item.Email)
+                    if (usuario.Email == item.Email && usuario.Senha == item.Senha)
                     {
-                        if (usuario.Senha == item.Senha)
-                        {
-                            toGo = true;
-                            break;
-                        }
+                        return RedirectToAction("Index", "Alunos");
                     }
-
-                }
-                if (toGo)
-                {
-                    return RedirectToAction("Index", "Alunos");
-                }
-                else
-                {
-                    return View();
                 }
             }
             return View();

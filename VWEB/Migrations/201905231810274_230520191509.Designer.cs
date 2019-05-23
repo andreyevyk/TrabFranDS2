@@ -7,13 +7,13 @@ namespace VWEB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InserindoTabelaAlunos : IMigrationMetadata
+    public sealed partial class _230520191509 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InserindoTabelaAlunos));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_230520191509));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905200023109_InserindoTabelaAlunos"; }
+            get { return "201905231810274_230520191509"; }
         }
         
         string IMigrationMetadata.Source
