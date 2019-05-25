@@ -4,58 +4,38 @@
     ViewBag.Title = "Create";
 }
 
-@using (Html.BeginForm())
-{
+    <div class="card" style="width:70%;">
+        <h5 class="card-header white-text text-center py-4" style="background-color: green;">
+            <strong>Criar Postagem</strong>
+        </h5>
+        <div class="card-body px-lg-5 pt-0" id="">
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="md-form md-outline">
+                    @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label" })
+                </div>
 
-    <h5 class="card-header white-text text-center py-4" style="background-color: green;">
-        <strong>Criando Post</strong>
-    </h5>
-    @Html.AntiForgeryToken()
+                <div class="md-form md-outline">
+                    @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label" })
+                </div>
+                <div class="md-form md-outline">
+                    @Html.TextAreaFor(model => model.Texto, htmlAttributes: new { @class = "form-control" })
+                    @Html.LabelFor(model => model.Texto, htmlAttributes: new { @class = "control-label " })
+                </div>
 
-    <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="ImagemCapa" id="ImagemCapa" aria-describedby="ImagemCapaAddon" required="">
+                    @Html.LabelFor(model => model.ImagemCapa, new { @class = "custom-file-label" })
+                </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descricao, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descricao, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descricao, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Texto, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <textarea class="form-control" name="Texto" rol="5">
-    
-                </textarea>
-                @Html.ValidationMessageFor(model => model.Texto, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Imagem, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Criar" class="btn btn-success" />
+                    </div>
+                </div>
+            }
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

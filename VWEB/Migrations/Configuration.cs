@@ -10,7 +10,6 @@ namespace VWEB.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "VWEB.Models.VWEBContext";
         }
 
         protected override void Seed(VWEB.Models.VWEBContext context)

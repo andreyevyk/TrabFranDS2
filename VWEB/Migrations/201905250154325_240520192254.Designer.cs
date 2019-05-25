@@ -7,13 +7,13 @@ namespace VWEB.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialCreate : IMigrationMetadata
+    public sealed partial class _240520192254 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialCreate));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_240520192254));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904081727084_InitialCreate"; }
+            get { return "201905250154325_240520192254"; }
         }
         
         string IMigrationMetadata.Source

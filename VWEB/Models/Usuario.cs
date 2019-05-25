@@ -13,5 +13,6 @@ namespace VWEB.Models
       public string Email { get; set; }
       public string Senha { get; set; }
 
+      public virtual ICollection<Postagem> Postagems { get; set; }
    }
 }

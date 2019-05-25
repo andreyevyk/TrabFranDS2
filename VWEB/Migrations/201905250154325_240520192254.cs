@@ -3,7 +3,7 @@ namespace VWEB.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class _240520192254 : DbMigration
     {
         public override void Up()
         {
@@ -28,6 +28,21 @@ namespace VWEB.Migrations
                 .Index(t => t.Turma_Id);
             
             CreateTable(
+                "dbo.Mensagems",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Titulo = c.String(),
+                        Texto = c.String(),
+                        Data = c.DateTime(nullable: false),
+                        TipoMensagem = c.Int(nullable: false),
+                        ResponsavelId = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Responsavels", t => t.ResponsavelId)
+                .Index(t => t.ResponsavelId);
+            
+            CreateTable(
                 "dbo.Responsavels",
                 c => new
                     {
@@ -49,6 +64,35 @@ namespace VWEB.Migrations
                         UltimoAcesso = c.String(),
                         PrimeiroAcesso = c.Boolean(nullable: false),
                         TipoResponsavel = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.Postagems",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Titulo = c.String(),
+                        Codigo = c.String(),
+                        Descricao = c.String(),
+                        Texto = c.String(),
+                        ImagemCapa = c.String(),
+                        Data = c.DateTime(nullable: false),
+                        UsuarioId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Usuarios", t => t.UsuarioId)
+                .Index(t => t.UsuarioId);
+            
+            CreateTable(
+                "dbo.Usuarios",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Nome = c.String(),
+                        Sobrenome = c.String(),
+                        Email = c.String(),
+                        Senha = c.String(),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -80,13 +124,20 @@ namespace VWEB.Migrations
         {
             DropForeignKey("dbo.Turmas", "Seriado_Id", "dbo.Seriadoes");
             DropForeignKey("dbo.Alunoes", "Turma_Id", "dbo.Turmas");
+            DropForeignKey("dbo.Postagems", "UsuarioId", "dbo.Usuarios");
+            DropForeignKey("dbo.Mensagems", "ResponsavelId", "dbo.Responsavels");
             DropForeignKey("dbo.Alunoes", "Responsavel_Id", "dbo.Responsavels");
             DropIndex("dbo.Turmas", new[] { "Seriado_Id" });
+            DropIndex("dbo.Postagems", new[] { "UsuarioId" });
+            DropIndex("dbo.Mensagems", new[] { "ResponsavelId" });
             DropIndex("dbo.Alunoes", new[] { "Turma_Id" });
             DropIndex("dbo.Alunoes", new[] { "Responsavel_Id" });
             DropTable("dbo.Seriadoes");
             DropTable("dbo.Turmas");
+            DropTable("dbo.Usuarios");
+            DropTable("dbo.Postagems");
             DropTable("dbo.Responsavels");
+            DropTable("dbo.Mensagems");
             DropTable("dbo.Alunoes");
         }
     }

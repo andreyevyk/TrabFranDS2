@@ -12,8 +12,10 @@ namespace VWEB.Models
       public string Codigo { get; set; }
       public string Descricao { get; set; }
       public string Texto { get; set; }
-      public string Imagem { get; set; }
+      public string ImagemCapa { get; set; }
       public DateTime Data { get; set; }
-      public Usuario UsuarioResponsavel { get; set; }
+
+      public int UsuarioId { get; set; }
+      public virtual Usuario Usuario { get; set; }
    }
 }
