@@ -1,30 +1,68 @@
 ﻿@model VWEB.Models.Usuario
 @{
-    /**/
-
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_TemplatePrincipal.cshtml";
     ViewBag.Title = "Home Page";
+    var Mensagens = ViewBag.Mensagens;
+    var Postagens = ViewBag.Postagens;
 }
+    <div class="mb-5" id="mensagensDaVilla">
+        <a href="/Mensagens">
+            <h2 class="text-dark">Mensagens Da Vila</h2>
+        </a>
+        <hr />
+        @if (Mensagens.Count != 0)
+        {
+            <div class="card-deck row">
+                @foreach (var mensagem in Mensagens)
+                {
+                    <div class="card col-md-4" style="width:60% !important">
+                        <div class="card-body">
+                            <h5 class="card-title text-success">
+                                @mensagem.Titulo
+                            </h5>
+                            <p class="card-text">
+                                @mensagem.Texto
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    <!--    <form class="form-signin" name="form" method="post" id="form_login"> -->
-    <div id="errorsMesages"></div>
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <a href="/Mensagens">
+                <h5 class="float-right text-success mt-3"> Ver Mais</h5>
+            </a>
+        }
+    </div>
 
+    <div id="aconteceNaVilla">
+        <a href="/Postagens">
+            <h2 class="text-dark">Acontece na Vila</h2>
+        </a>
+        <hr />
+        @if (Postagens.Count != 0)
+        {
+            <div id="" class="card-deck">
 
-    <img class="mb-4" src="~/Images/icon-passaro.png" alt="" width="72" height="72">
-    <h1 class="h3 mb-3 font-weight-normal">Painel Interno</h1>
-    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", required = true, autofocus = true, placeholder = "E-mail" } })
-    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-    <!--<input type="text" name="Email" id="Email" class="form-control" placeholder="Login ou Email" required autofocus style="border-radius: 10px 10px 0 0;" name="pmatricula">
-    <label for="pSenhaNet" class="sr-only">Senha</label>-->
-    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", required = true, placeholder = "Senha" } })
-    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
-    @*<input type="password" id="pSenhaNet" class="form-control" placeholder="Senha" required name="pSenhaNet">*@
-    <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
+                @foreach (var postagem in Postagens)
+                {
+                    <a class="card">
+                        <div class="view">
+                            <img src="@postagem.ImagemCapa" />
+                            <div class="mask pattern-6 flex-center waves-effect waves-light">
+                                <p class="white-text">@postagem.Titulo</p>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                @postagem.Texto
+                            </p>
+                        </div>
+                    </a>
+                }
+            </div>
+            <a href="/Postagens">
+                <h5 class="float-right text-success mt-3">Ver Mais</h5>
+            </a>
+        }
+    </div>
 
-    <p class="mt-5 mb-3 text-muted">&copy; 2018 - 2019</p>
-    <!-- </form> -->
-}

@@ -1,0 +1,30 @@
+﻿@model VWEB.Models.Usuario
+@{
+    /**/
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Home Page";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <!--    <form class="form-signin" name="form" method="post" id="form_login"> -->
+    <div id="errorsMesages"></div>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+    <img class="mb-4" src="~/Images/icon-passaro.png" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Painel Interno</h1>
+    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", required = true, autofocus = true, placeholder = "E-mail" } })
+    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+    <!--<input type="text" name="Email" id="Email" class="form-control" placeholder="Login ou Email" required autofocus style="border-radius: 10px 10px 0 0;" name="pmatricula">
+    <label for="pSenhaNet" class="sr-only">Senha</label>-->
+    @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control", required = true, placeholder = "Senha" } })
+    @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
+    @*<input type="password" id="pSenhaNet" class="form-control" placeholder="Senha" required name="pSenhaNet">*@
+    <button class="btn btn-lg btn-success btn-block" type="submit">Entrar</button>
+
+    <p class="mt-5 mb-3 text-muted">&copy; 2018 - 2019</p>
+    <!-- </form> -->
+}
