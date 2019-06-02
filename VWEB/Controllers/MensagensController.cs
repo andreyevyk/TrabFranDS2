@@ -18,6 +18,10 @@ namespace VWEB.Controllers
         public ActionResult Index()
         {
             var mensagems = db.Mensagems.Include(m => m.Responsavel);
+            if(mensagems.Count() != 0)
+            {
+
+            }
             return View(mensagems.ToList());
         }
 

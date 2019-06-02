@@ -13,37 +13,11 @@ namespace VWEB.Controllers
 
         public ActionResult Index()
         {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Index(Usuario usuario)
-        {
-            if (ModelState.IsValid)
-            {
-                foreach (var item in db.Usuarios.ToList())
-                {
-                    if (usuario.Email == item.Email && usuario.Senha == item.Senha)
-                    {
-                        return RedirectToAction("Index", "Alunos");
-                    }
-                }
-            }
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Mensagens = db.Mensagems.Take(3).ToList();
+            ViewBag.Postagens = db.Postagems.Take(3).ToList();
 
             return View();
         }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
+       
     }
 }
