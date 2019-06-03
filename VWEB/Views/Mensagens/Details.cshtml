@@ -3,21 +3,15 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
-
 <div>
-    <h4>Mensagem</h4>
+    
+    <a class="font-weight-bold float-right text-success" href="/Home">
+        Voltar
+    </a>
+
+    <h2>@Model.Titulo</h2>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Titulo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Titulo)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Texto)
         </dt>
@@ -35,23 +29,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ComImagem)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ComImagem)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagem)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Imagem)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TipoMensagem)
+            Público
         </dt>
 
         <dd>
@@ -60,7 +38,3 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

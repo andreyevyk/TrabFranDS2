@@ -33,9 +33,10 @@ namespace VWEB.Controllers
                 {
                     if (usuario.Email == item.Email && usuario.Senha == item.Senha)
                     {
-                        Session["email"] = usuario.Email;
-                        Session["senha"] = usuario.Senha;
-                        return RedirectToAction("Index", "Alunos");
+                        Session["idUser"] = item.Id;
+                        Session["email"] = item.Email;
+                        Session["senha"] = item.Senha;
+                        return RedirectToAction("Index", "Home");
                     }
                 }
             }

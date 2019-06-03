@@ -17,7 +17,7 @@
 
 </head>
 
-<body>
+<body style="padding-top: 0px;">
     <div class="page-wrapper chiller-theme toggled">
         <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
             <i class="fas fa-bars"></i>
@@ -67,15 +67,27 @@
                         </li>
                         <li class="">
                             <a href="/">
-                                <i class="fa fa-tachometer-alt"></i>
+                                <i class="fa fa-home"></i>
                                 <span>Página Inicial</span>
                             </a>
                         </li>
-                        <li class="">
+                        <li class="sidebar-dropdown">
                             <a href="#">
                                 <i class="fas fa-users"></i>
-                                <span>Usuários</span>
+                                <span>Usuarios</span>
                             </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="/Usuarios/Create">
+                                            Adicionar Usuario
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="/Usuarios">Visulizar</a>
+                                    </li>
+                                </ul>
+                            </div>
                         </li>
                         <li class="header-menu">
                             <span>Site</span>
@@ -155,15 +167,14 @@
             </div>
             <!-- sidebar-content  -->
             <div class="sidebar-footer">
-                <a href="#">
-                    <i class="fa fa-bell"></i>
-                    <span class="badge badge-pill badge-warning notification">3</span>
+                <a href="/">
+                    <i class="fa fa-home"></i>
                 </a>
                 <a href="#">
                     <i class="fa fa-envelope"></i>
                     <span class="badge badge-pill badge-success notification">7</span>
                 </a>
-                <a href="./Loggout/Deslogar">
+                <a href="~/Loggout/Deslogar">
                     <i class="fa fa-power-off"></i>
                 </a>
             </div>

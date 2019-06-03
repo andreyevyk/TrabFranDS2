@@ -67,14 +67,17 @@ namespace VWEB.Controllers
 
         public ActionResult Create([Bind(Include = "Id,Nome,Sobrenome,Email,Senha")] Usuario usuario)
         {
-            if (ModelState.IsValid)
+            foreach(var user in db.Usuarios)
             {
-                db.Usuarios.Add(usuario);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (user.Email == usuario.Email)
+                {
+                    ViewBag.JaExiste = "Já existe usuário com esse email";
+                    return View(usuario);
+                }
             }
-
-            return View(usuario);
+            db.Usuarios.Add(usuario);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Usuarios/Edit/5
@@ -146,6 +149,16 @@ namespace VWEB.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Usuario usuario = db.Usuarios.Find(id);
+            if (db.Usuarios.Find(id).Id == (int)Session["idUser"])
+            {
+                Session.Remove("email");
+                Session.Remove("senha");
+                Session.Abandon();
+
+                db.Usuarios.Remove(usuario);
+                db.SaveChanges();
+                return RedirectToAction("~");
+            }
             db.Usuarios.Remove(usuario);
             db.SaveChanges();
             return RedirectToAction("Index");

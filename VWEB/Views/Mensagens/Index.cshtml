@@ -14,8 +14,7 @@
         <div class="card col-md-4 mb-4" style="padding: 0 0 0 0;">
             <div class="card-body" style="padding: 1rem;">
                 <h5 class="card-title" style="padding: 0 0 0 0;">
-
-                    @Html.ActionLink(item.Titulo, "#","#", new { @class = "text-success" })
+                    <a class="text-success" href="/Mensagens/Details/@item.Id">Teste</a>                
                 </h5>
                 <p class="card-text">
                     @item.Texto.Substring(0, 40)
