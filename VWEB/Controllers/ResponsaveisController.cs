@@ -15,14 +15,25 @@ namespace VWEB.Controllers
         private VWEBContext db = new VWEBContext();
 
         // GET: Responsaveis
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Index()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.Responsavels.ToList());
         }
 
         // GET: Responsaveis/Details/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Details(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,8 +47,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Responsaveis/Create
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Create()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -46,6 +63,8 @@ namespace VWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Create([Bind(Include = "Id,Email,Senha,Nome,Sobrenome,Endereco,EndNumero,EndComplemento,Telefone,Telefone2,Observacao,UltimoAcesso,PrimeiroAcesso,TipoResponsavel")] Responsavel responsavel)
         {
             if (ModelState.IsValid)
@@ -59,8 +78,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Responsaveis/Edit/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,6 +103,8 @@ namespace VWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit([Bind(Include = "Id,Email,Senha,Nome,Sobrenome,Endereco,EndNumero,EndComplemento,Telefone,Telefone2,Observacao,UltimoAcesso,PrimeiroAcesso,TipoResponsavel")] Responsavel responsavel)
         {
             if (ModelState.IsValid)
@@ -90,8 +117,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Responsaveis/Delete/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Delete(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,6 +140,8 @@ namespace VWEB.Controllers
         // POST: Responsaveis/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult DeleteConfirmed(int id)
         {
             Responsavel responsavel = db.Responsavels.Find(id);

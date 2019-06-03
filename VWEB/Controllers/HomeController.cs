@@ -13,6 +13,11 @@ namespace VWEB.Controllers
 
         public ActionResult Index()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
             ViewBag.Mensagens = db.Mensagems.Take(3).ToList();
             ViewBag.Postagens = db.Postagems.Take(3).ToList();
 

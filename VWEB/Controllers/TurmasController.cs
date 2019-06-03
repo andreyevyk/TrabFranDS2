@@ -15,14 +15,26 @@ namespace VWEB.Controllers
         private VWEBContext db = new VWEBContext();
 
         // GET: Turmas
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Index()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.Turmas.ToList());
         }
 
         // GET: Turmas/Details/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Details(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,8 +48,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Turmas/Create
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Create()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -46,6 +64,8 @@ namespace VWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Create([Bind(Include = "Id,Nome,MaxAlunos")] Turma turma)
         {
             if (ModelState.IsValid)
@@ -59,8 +79,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Turmas/Edit/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,6 +104,8 @@ namespace VWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit([Bind(Include = "Id,Nome,MaxAlunos")] Turma turma)
         {
             if (ModelState.IsValid)
@@ -92,6 +120,10 @@ namespace VWEB.Controllers
         // GET: Turmas/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,6 +139,8 @@ namespace VWEB.Controllers
         // POST: Turmas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult DeleteConfirmed(int id)
         {
             Turma turma = db.Turmas.Find(id);

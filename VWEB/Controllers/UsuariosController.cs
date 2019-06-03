@@ -15,14 +15,25 @@ namespace VWEB.Controllers
         private VWEBContext db = new VWEBContext();
 
         // GET: Usuarios
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Index()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.Usuarios.ToList());
         }
 
         // GET: Usuarios/Details/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Details(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -36,8 +47,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Usuarios/Create
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Create()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -46,6 +63,8 @@ namespace VWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Create([Bind(Include = "Id,Nome,Sobrenome,Email,Senha")] Usuario usuario)
         {
             if (ModelState.IsValid)
@@ -59,8 +78,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Usuarios/Edit/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -78,8 +103,11 @@ namespace VWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit([Bind(Include = "Id,Nome,Sobrenome,Email,Senha")] Usuario usuario)
         {
+
             if (ModelState.IsValid)
             {
                 db.Entry(usuario).State = EntityState.Modified;
@@ -90,8 +118,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Usuarios/Delete/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Delete(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -107,6 +141,8 @@ namespace VWEB.Controllers
         // POST: Usuarios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult DeleteConfirmed(int id)
         {
             Usuario usuario = db.Usuarios.Find(id);
