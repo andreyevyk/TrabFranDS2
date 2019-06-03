@@ -15,7 +15,7 @@
             <div class="card-deck row">
                 @foreach (var mensagem in Mensagens)
                 {
-                    <div class="card col-md-4" style="width:315.612px">
+                    <div class="card col-md-4">
                         <div class="card-body">
                             <h5 class="card-title text-success">
                                 @mensagem.Titulo
@@ -27,7 +27,6 @@
                     </div>
                 }
             </div>
-
             <a href="/Mensagens">
                 <h5 class="float-right text-success mt-3"> Ver Mais</h5>
             </a>
@@ -45,7 +44,7 @@
 
                 @foreach (var postagem in Postagens)
                 {
-                    <a class="card" style="width:315.612px" >
+                    <a class="card" >
                         <div class="view">
                             <img src="@postagem.ImagemCapa" width="220" height="150"/>
                             <div class="mask pattern-6 flex-center waves-effect waves-light">

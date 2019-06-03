@@ -152,6 +152,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlunosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoggoutController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MensagensController.cs" />
     <Compile Include="Controllers\PostagensController.cs" />
@@ -341,6 +342,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
+    <Folder Include="Views\Loggout\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

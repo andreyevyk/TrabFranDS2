@@ -18,14 +18,26 @@ namespace VWEB.Controllers
         private VWEBContext db = new VWEBContext();
 
         // GET: Postagens
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Index()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View(db.Postagems.ToList());
         }
 
         // GET: Postagens/Details/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Details(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,8 +51,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Postagens/Create
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Create()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             return View();
         }
 
@@ -50,6 +68,7 @@ namespace VWEB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AcceptVerbs(HttpVerbs.Post)]
+        [OutputCache(NoStore = true, Duration = 0)]
 
         public ActionResult Create([Bind(Include = "Id,Titulo,Codigo,Descricao,Texto")] Postagem postagem, HttpPostedFileBase file)
         {
@@ -78,8 +97,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Postagens/Edit/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -97,6 +122,8 @@ namespace VWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit([Bind(Include = "Id,Titulo,Codigo,Descricao,Texto,Imagem,Data")] Postagem postagem)
         {
             if (ModelState.IsValid)
@@ -109,8 +136,13 @@ namespace VWEB.Controllers
         }
 
         // GET: Postagens/Delete/5
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Delete(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -124,6 +156,8 @@ namespace VWEB.Controllers
         }
 
         // POST: Postagens/Delete/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -12,10 +12,17 @@ namespace VWEB.Controllers
 
         private VWEBContext db = new VWEBContext();
 
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Index()
         {
+            if (Session["email"] != null && Session["senha"] != null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
             return View();
         }
+
+        [OutputCache(NoStore = true, Duration = 0)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(Usuario usuario)

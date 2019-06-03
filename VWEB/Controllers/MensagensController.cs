@@ -15,19 +15,25 @@ namespace VWEB.Controllers
         private VWEBContext db = new VWEBContext();
 
         // GET: Mensagems
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Index()
         {
-            var mensagems = db.Mensagems.Include(m => m.Responsavel);
-            if(mensagems.Count() != 0)
+            if (Session["email"] == null && Session["senha"] == null)
             {
-
+                return RedirectToAction("Index", "Login");
             }
+            var mensagems = db.Mensagems.Include(m => m.Responsavel);
             return View(mensagems.ToList());
         }
 
         // GET: Mensagems/Details/5
+        [OutputCache(NoStore = true, Duration = 0)]
         public ActionResult Details(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -41,8 +47,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Mensagems/Create
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Create()
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             ViewBag.ResponsavelId = new SelectList(db.Responsavels.OrderBy(r => r.Nome), "Id", "Nome");
             return View();
         }
@@ -53,6 +65,8 @@ namespace VWEB.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Create([Bind(Include = "Id,Titulo,Texto,Data,TipoMensagem,ResponsavelId")] Mensagem mensagem)
         {
             if (ModelState.IsValid)
@@ -67,8 +81,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Mensagems/Edit/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -87,6 +107,8 @@ namespace VWEB.Controllers
         // obter mais detalhes, consulte https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Edit([Bind(Include = "Id,Titulo,Texto,Data,TipoMensagem,ResponsavelId")] Mensagem mensagem)
         {
             if (ModelState.IsValid)
@@ -100,8 +122,14 @@ namespace VWEB.Controllers
         }
 
         // GET: Mensagems/Delete/5
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult Delete(int? id)
         {
+            if (Session["email"] == null && Session["senha"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -117,6 +145,8 @@ namespace VWEB.Controllers
         // POST: Mensagems/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [OutputCache(NoStore = true, Duration = 0)]
+
         public ActionResult DeleteConfirmed(int id)
         {
             Mensagem mensagem = db.Mensagems.Find(id);
