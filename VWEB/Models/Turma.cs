@@ -5,6 +5,7 @@ using System.Web;
 
 namespace VWEB.Models
 {
+    public enum Seriado { Berçario, G1, G2, G3, G4, G5 }
    public class Turma
    {
       public int Id { get; set; }

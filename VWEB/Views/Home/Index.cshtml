@@ -12,7 +12,7 @@
         <hr />
         @if (Mensagens.Count != 0)
         {
-            <div class="card-deck row">
+            <div class="d-flex row">
                 @foreach (var mensagem in Mensagens)
                 {
                     <div class="card col-md-4">
@@ -22,7 +22,6 @@
                                     @mensagem.Titulo
                                 </h5>
                             </a>
-                            
                             <p class="card-text">
                                 @mensagem.Texto
                             </p>
@@ -43,11 +42,11 @@
         <hr />
         @if (Postagens.Count != 0)
         {
-            <div id="" class="card-deck">
+            <div id="" class="d-flex">
 
                 @foreach (var postagem in Postagens)
                 {
-                    <a class="card" href="/">
+                    <a class="card mr-4" style="width:35%" href="/">
                         <div class="view">
                             <img src="@postagem.ImagemCapa" width="220" height="150"/>
                             <div class="mask pattern-6 flex-center waves-effect waves-light">

@@ -170,15 +170,25 @@
     <Compile Include="Migrations\201906030153593_020620192253.Designer.cs">
       <DependentUpon>201906030153593_020620192253.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906030445213_030620190143.cs" />
+    <Compile Include="Migrations\201906030445213_030620190143.Designer.cs">
+      <DependentUpon>201906030445213_030620190143.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906030526050_030620190225.cs" />
+    <Compile Include="Migrations\201906030526050_030620190225.Designer.cs">
+      <DependentUpon>201906030526050_030620190225.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906030535073_030620190234.cs" />
+    <Compile Include="Migrations\201906030535073_030620190234.Designer.cs">
+      <DependentUpon>201906030535073_030620190234.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aluno.cs" />
-    <Compile Include="Models\Endereco.cs" />
     <Compile Include="Models\Matricula.cs" />
     <Compile Include="Models\Mensagem.cs" />
     <Compile Include="Models\MensagemView.cs" />
     <Compile Include="Models\Postagem.cs" />
     <Compile Include="Models\Responsavel.cs" />
-    <Compile Include="Models\Seriado.cs" />
     <Compile Include="Models\Turma.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\VWEBContext.cs" />
@@ -363,6 +373,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906030153593_020620192253.resx">
       <DependentUpon>201906030153593_020620192253.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906030445213_030620190143.resx">
+      <DependentUpon>201906030445213_030620190143.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906030526050_030620190225.resx">
+      <DependentUpon>201906030526050_030620190225.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906030535073_030620190234.resx">
+      <DependentUpon>201906030535073_030620190234.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

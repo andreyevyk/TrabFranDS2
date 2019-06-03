@@ -33,6 +33,8 @@ namespace VWEB.Controllers
                 {
                     if (usuario.Email == item.Email && usuario.Senha == item.Senha)
                     {
+                        Session["nome"] = item.Nome;
+                        Session["sobrenome"] = item.Sobrenome;
                         Session["idUser"] = item.Id;
                         Session["email"] = item.Email;
                         Session["senha"] = item.Senha;

@@ -593,10 +593,13 @@ pre code {
   margin-right: -15px;
   margin-left: -15px;
 }
+.row.cadResp {
+    height: 70px;
+}
 
 .no-gutters {
-  margin-right: 0;
-  margin-left: 0;
+    margin-right: 0;
+    margin-left: 0;
 }
 
 .no-gutters > .col,

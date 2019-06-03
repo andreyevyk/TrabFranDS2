@@ -19,7 +19,6 @@ namespace VWEB.Controllers
 
         // GET: Postagens
         [OutputCache(NoStore = true, Duration = 0)]
-
         public ActionResult Index()
         {
             if (Session["email"] == null && Session["senha"] == null)
@@ -87,7 +86,7 @@ namespace VWEB.Controllers
                 postagem.Data = DateTime.Now;
                 postagem.Codigo = GetMd5Hash(md5hash, postagem.Titulo);
                 postagem.ImagemCapa = "Uploads/" + file.FileName;
-                postagem.UsuarioId = 1;
+                postagem.UsuarioId = (int)Session["idUser"];
                 db.Postagems.Add(postagem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
