@@ -478,3 +478,8 @@ body {
 .chiller-theme .sidebar-footer>a:last-child {
     border-right: none;
 }
+
+.btn-verdeMusgo {
+    background-color: green;
+    color: white !important;
+}

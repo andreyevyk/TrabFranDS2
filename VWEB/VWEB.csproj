@@ -182,9 +182,12 @@
     <Compile Include="Migrations\201906030535073_030620190234.Designer.cs">
       <DependentUpon>201906030535073_030620190234.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906051842467_050620191540.cs" />
+    <Compile Include="Migrations\201906051842467_050620191540.Designer.cs">
+      <DependentUpon>201906051842467_050620191540.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Aluno.cs" />
-    <Compile Include="Models\Matricula.cs" />
     <Compile Include="Models\Mensagem.cs" />
     <Compile Include="Models\MensagemView.cs" />
     <Compile Include="Models\Postagem.cs" />
@@ -322,11 +325,6 @@
     <Content Include="Views\Responsaveis\Details.cshtml" />
     <Content Include="Views\Responsaveis\Edit.cshtml" />
     <Content Include="Views\Responsaveis\Index.cshtml" />
-    <Content Include="Views\Turmas\Create.cshtml" />
-    <Content Include="Views\Turmas\Delete.cshtml" />
-    <Content Include="Views\Turmas\Details.cshtml" />
-    <Content Include="Views\Turmas\Edit.cshtml" />
-    <Content Include="Views\Turmas\Index.cshtml" />
     <Content Include="Views\Shared\_TemplatePrincipal.cshtml" />
     <Content Include="Views\Usuarios\Create.cshtml" />
     <Content Include="Views\Usuarios\Delete.cshtml" />
@@ -353,6 +351,10 @@
     <Content Include="Views\Postagens\Edit.cshtml" />
     <Content Include="Views\Postagens\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Turmas\Create.cshtml" />
+    <Content Include="Views\Turmas\Delete.cshtml" />
+    <Content Include="Views\Turmas\Edit.cshtml" />
+    <Content Include="Views\Turmas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
@@ -382,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906030535073_030620190234.resx">
       <DependentUpon>201906030535073_030620190234.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906051842467_050620191540.resx">
+      <DependentUpon>201906051842467_050620191540.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 using VWEB.Models;
@@ -53,6 +56,9 @@ namespace VWEB.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
+            ViewBag.ResponsavelId = new SelectList(db.Responsavels.OrderBy(r => r.Nome), "Id", "Nome");
+            ViewBag.TurmaId = new SelectList(db.Turmas, "Id", "Nome").ToList();
+
             return View();
         }
 
@@ -63,13 +69,26 @@ namespace VWEB.Controllers
         [ValidateAntiForgeryToken]
         [OutputCache(NoStore = true, Duration = 0)]
 
-        public ActionResult Create([Bind(Include = "Id,Nome,Sobrenome,Matricula,Observacao,Img,SenhaSei")] Aluno aluno)
+        public ActionResult Create([Bind(Include = "Id,Nome,Sobrenome,Matricula,Observacao,Img")] Aluno aluno, HttpPostedFileBase file,int ResponsavelId, int TurmaId)
         {
             if (ModelState.IsValid)
             {
+                if (file == null)
+                {
+                    file = this.Request.Files[0];
+                }
+                string _FileName = Path.GetFileName(file.FileName);
+                string _Path = Path.Combine(Server.MapPath("~/Uploads"), _FileName);
+                file.SaveAs(_Path);
+
+                aluno.Img = "Uploads/" + file.FileName;
+                aluno.TurmaId = TurmaId;
+                aluno.ReponsavelId = ResponsavelId;
+
                 db.Alunos.Add(aluno);
                 db.SaveChanges();
                 return RedirectToAction("Index");
+            
             }
 
             return View(aluno);
@@ -101,11 +120,22 @@ namespace VWEB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [OutputCache(NoStore = true, Duration = 0)]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Sobrenome,Matricula,Observacao,Img,SenhaSei")] Aluno aluno)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Sobrenome,Matricula,Observacao,Img")] Aluno aluno, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(aluno).State = EntityState.Modified;
+
+                if (file == null)
+                {
+                    file = this.Request.Files[0];
+                }
+                string _FileName = Path.GetFileName(file.FileName);
+                string _Path = Path.Combine(Server.MapPath("~/Uploads"), _FileName);
+                file.SaveAs(_Path);
+
+                aluno.Img = "Uploads/" + file.FileName;
+
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -153,5 +183,28 @@ namespace VWEB.Controllers
             }
             base.Dispose(disposing);
         }
+
+        static string GetMd5Hash(MD5 md5Hash, string input)
+        {
+
+            // Convert the input string to a byte array and compute the hash.
+            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes(input));
+
+            // Create a new Stringbuilder to collect the bytes
+            // and create a string.
+            StringBuilder sBuilder = new StringBuilder();
+
+            // Loop through each byte of the hashed data 
+            // and format each one as a hexadecimal string.
+            for (int i = 0; i < data.Length; i++)
+            {
+                sBuilder.Append(data[i].ToString("x2"));
+            }
+
+            // Return the hexadecimal string.
+            return sBuilder.ToString();
+        }
+
     }
+
 }

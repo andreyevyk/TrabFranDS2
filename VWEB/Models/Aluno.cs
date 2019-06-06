@@ -17,5 +17,8 @@ namespace VWEB.Models
         public int? ReponsavelId { get; set; }
         public virtual Responsavel Reponsavel { get; set; }
 
+        public int? TurmaId { get; set; }
+        public virtual Turma Turma { get; set; }
+
     }
 }

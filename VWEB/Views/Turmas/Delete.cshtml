@@ -27,14 +27,21 @@
             @Html.DisplayFor(model => model.MaxAlunos)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Seriado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Seriado)
+        </dd>
+
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <a class="btn btn-warning" href="/Turmas">Voltar</a>
     }
 </div>
