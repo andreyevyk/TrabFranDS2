@@ -104,9 +104,12 @@ namespace VWEB.Controllers
             }
             if (id == null)
             {
+
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Aluno aluno = db.Alunos.Find(id);
+            ViewBag.ResponsavelId = new SelectList(db.Responsavels.OrderBy(r => r.Nome), "Id", "Nome");
+            ViewBag.TurmaId = new SelectList(db.Turmas, "Id", "Nome").ToList();
             if (aluno == null)
             {
                 return HttpNotFound();
@@ -120,7 +123,7 @@ namespace VWEB.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [OutputCache(NoStore = true, Duration = 0)]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Sobrenome,Matricula,Observacao,Img")] Aluno aluno, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "Id,Nome,Sobrenome,Matricula,Observacao,Img")] Aluno aluno, HttpPostedFileBase file, int ResponsavelId, int TurmaId)
         {
             if (ModelState.IsValid)
             {
@@ -135,7 +138,8 @@ namespace VWEB.Controllers
                 file.SaveAs(_Path);
 
                 aluno.Img = "Uploads/" + file.FileName;
-
+                aluno.TurmaId = TurmaId;
+                aluno.ReponsavelId = ResponsavelId;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

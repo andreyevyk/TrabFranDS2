@@ -4,11 +4,8 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Responsáveis</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -72,11 +69,16 @@
             @Html.DisplayFor(modelItem => item.TipoResponsavel)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a href="/Responsaveis/Edit/@item.Id" class="btn btn-dark-green lighten-2">
+                <i class="fas fa-edit text-white"></i>
+            </a>
+            <a href="/Responsaveis/Delete/@item.Id" class="btn deep-orange lighten-2">
+                <i class="fas fa-trash text-white">
+                </i>
+            </a>
         </td>
     </tr>
+
 }
 
 </table>

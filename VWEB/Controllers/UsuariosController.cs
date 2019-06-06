@@ -149,6 +149,14 @@ namespace VWEB.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Usuario usuario = db.Usuarios.Find(id);
+            
+            foreach (var Postagem in db.Postagems)
+            {
+                if(Postagem.UsuarioId == (int)Session["idUser"])
+                {
+                    Postagem.UsuarioId = 1;
+                }
+            }
             if (db.Usuarios.Find(id).Id == (int)Session["idUser"])
             {
                 Session.Remove("email");
@@ -157,7 +165,7 @@ namespace VWEB.Controllers
 
                 db.Usuarios.Remove(usuario);
                 db.SaveChanges();
-                return RedirectToAction("~");
+                return RedirectToAction("Index", "Login");
             }
             db.Usuarios.Remove(usuario);
             db.SaveChanges();

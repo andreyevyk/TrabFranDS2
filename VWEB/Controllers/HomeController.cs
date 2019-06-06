@@ -18,8 +18,8 @@ namespace VWEB.Controllers
                 return RedirectToAction("Index", "Login");
             }
 
-            ViewBag.Mensagens = db.Mensagems.Take(3).ToList();
-            ViewBag.Postagens = db.Postagems.Take(3).ToList();
+            ViewBag.Mensagens = db.Mensagems.Take(3).OrderByDescending(m => m.Id).ToList();
+            ViewBag.Postagens = db.Postagems.Take(3).OrderByDescending(p => p.Id).ToList();
 
             return View();
         }

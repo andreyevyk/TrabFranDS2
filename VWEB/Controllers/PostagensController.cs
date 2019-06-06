@@ -82,11 +82,11 @@ namespace VWEB.Controllers
                 file.SaveAs(_Path);
 
                 MD5 md5hash = MD5.Create();
-
+                int usuario = (int)Session["idUser"];
                 postagem.Data = DateTime.Now;
                 postagem.Codigo = GetMd5Hash(md5hash, postagem.Titulo);
                 postagem.ImagemCapa = "Uploads/" + file.FileName;
-                postagem.UsuarioId = (int)Session["idUser"];
+                postagem.UsuarioId = usuario;
                 db.Postagems.Add(postagem);
                 db.SaveChanges();
                 return RedirectToAction("Index");
